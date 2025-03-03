@@ -9,3 +9,10 @@ jobs:
     steps:
       - name: Display title
         run: echo "Awesome title"
+      - name: Display Node
+        run: |
+          node -v
+          npm -v
+      - name: Display OS info
+        run: |
+          uname -a
