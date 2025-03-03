@@ -7,7 +7,8 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Show working directory
-        run: |
-          pwd
-          ls -a
+      - name: Show working directory before
+        run: ls -a
+      - uses: actions/checkout@v4
+      - name: Show working directory after
+        run: ls -a
