@@ -1,6 +1,13 @@
 name: 08_workflow
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        type: string
+        required: true
+        default: "Just some title"
+        description: "Awesome title"
 
 jobs:
   primo_job:
@@ -8,5 +15,4 @@ jobs:
     steps:
       - name: Primo step
         run: |
-          echo $GITHUB_SHA
-          echo $GITHUB_REF
+          echo "Here is title ${{ inputs.title }}"
