@@ -12,8 +12,17 @@ on:
       - completed
 
 jobs:
-  fourth_workflow_job:
+  success_job:
     runs-on: ubuntu-latest
+    # проверяем статус выполнения workflow, указанного как зависимость
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Node version
-        run: node -v
+      - name: Job Success
+        run: echo "Success job"
+  failure_job:
+    runs-on: ubuntu-latest
+    # проверяем статус выполнения workflow, указанного как зависимость
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: Job Failure
+        run: echo "Failure job"
