@@ -1,0 +1,12 @@
+name: 07_workflow
+
+on:
+  schedule:
+    - cron: "*/5 * * * THU"
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: primo step
+        run: echo "Primo step"
