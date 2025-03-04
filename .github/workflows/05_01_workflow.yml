@@ -1,0 +1,20 @@
+name: 05_01-workflow
+
+on:
+  issues:
+    types:
+      - edited
+      - deleted
+  pull_request:
+    types:
+      - assigned
+      - closed
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Events Variables
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
