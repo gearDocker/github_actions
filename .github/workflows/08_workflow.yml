@@ -8,6 +8,20 @@ on:
         required: true
         default: "Just some title"
         description: "Awesome title"
+      select:
+        type: choice
+        required: true
+        description: "Select some value"
+        options:
+          - value 1
+          - value 2
+          - value 3
+          - value 4
+        default: "value 2"
+      check:
+        type: boolean
+        required: false
+        description: "Check state"
 
 jobs:
   primo_job:
@@ -15,4 +29,6 @@ jobs:
     steps:
       - name: Primo step
         run: |
-          echo "Here is title ${{ inputs.title }}"
+          echo "Here's title: ${{ inputs.title }}"
+          echo "Here's select: ${{ inputs.select }}"
+          echo "Here's checkbox: ${{ inputs.check }}"
