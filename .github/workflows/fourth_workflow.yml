@@ -1,0 +1,19 @@
+name: Fourth Workflow
+
+on:
+  # Указываем workflow, от выполнения которых зависит выполнение данного workflow
+  workflow_run:
+    # Массив workflows, от которых зависит выполнение данного workflow
+    workflows:
+      - Third Workflow
+    # Тип состояния workflows, от которых зависит выполнение данного workflow
+    # в данном случае говорим, что текущий workflow запустится после завершения (completed) указанных выше workflows
+    types:
+      - completed
+
+jobs:
+  fourth_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Node version
+        run: node -v
