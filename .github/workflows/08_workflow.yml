@@ -1,0 +1,12 @@
+name: 08_workflow
+
+on: workflow_dispatch
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Primo step
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REF
