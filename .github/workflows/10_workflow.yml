@@ -2,6 +2,8 @@ name: 10_workflow
 
 on: workflow_dispatch
 
+run-name: "Display Context Info"
+
 jobs:
   primo_job:
     runs-on: ubuntu-latest
@@ -13,3 +15,5 @@ jobs:
           echo "Show runner info ${{ toJson(runner) }}"
           echo "Show job info ${{ toJson(job) }}"
           echo "Show steps info ${{ toJson(steps) }}"
+      - name: Display Second Step
+        run: echo "Show steps info ${{ toJson(steps) }}"
