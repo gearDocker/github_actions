@@ -1,0 +1,15 @@
+name: 10_workflow
+
+on: workflow_dispatch
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Github Context
+        id: github_context
+        run: |
+          echo "Show github info ${{ toJson(github) }}"
+          echo "Show runner info ${{ toJson(runner) }}"
+          echo "Show job info ${{ toJson(job) }}"
+          echo "Show steps info ${{ toJson(steps) }}"
