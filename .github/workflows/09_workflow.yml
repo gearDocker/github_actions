@@ -1,0 +1,13 @@
+name: 09_workflow
+
+on:
+  repository_dispatch:
+    types:
+      - test
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: first step
+        run: echo ${{ github.event.client_payload.title }}
