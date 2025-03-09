@@ -1,0 +1,13 @@
+name: Variables and Secrets
+run-name: "Variables and Secrets"
+on:
+  - push
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show secrets and variables
+        run: |
+          echo ${{ vars.STATUS }}
+          echo ${{ secrets.PASSWORD }}
