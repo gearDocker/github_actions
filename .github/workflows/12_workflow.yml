@@ -6,7 +6,7 @@ on:
 jobs:
   primo_job:
     runs-on: ubuntu-latest
-    environment: "development"
+    environment: "production"
     steps:
       - name: Show secrets and variables
         run: |
