@@ -14,6 +14,10 @@ jobs:
     env:
       JOB_CUSTOM_VAR: "job variable" # переменная, доступная внутри конкретной job
     steps:
+      - name: Create variable in special file
+        run: echo "CUSTOM_VAR_IN_FILE='Custom variable'" >> "$GITHUB_ENV"
+      - name: Display variable from file
+        run: echo $CUSTOM_VAR_IN_FILE
       - name: primo step
         env:
           STEP_CUSTOM_VAR: "step variable" # переменная уровня конкретного step
