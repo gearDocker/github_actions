@@ -19,7 +19,7 @@ jobs:
       - name: Run on any case # Шаг запустится в любом случае
         if: ${{ always() }}
         run: echo "Run on any case"
-      - name: Run on Failure # Данный шаг выполнится только в том случае, если один из предыдущих шаг завершится с ошибкой
+      - name: Run on Failure # Данный шаг выполнится только в том случае, если хотя бы один из предыдущих шаг завершился с ошибкой
         if: ${{ failure() }}
         run: echo "Run on Failure"
   secondo_job:
