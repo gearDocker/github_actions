@@ -1,0 +1,23 @@
+name: Status Functions
+run-name: "Status Functions"
+on:
+  - push
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step
+        run: sleep 30
+      - name: Run on Cancelled # Если cancelled() вернет true, данный шаг выполнится
+        if: ${{ cancelled() }}
+        run: echo "Run on Cancelled"
+      - name: Run on Failure # Данный шаг выполнится только в том случае, если cancelled() вернет true - своего рода зависимость от cancelled()
+        if: ${{ failure() }}
+        run: echo "Run on Failure"
+      - name: Run on Success # Данный шаг выполнится при успехе
+        if: ${{ success() }}
+        run: echo "Run on Success"
+      - name: Run on any case # Шаг запустится в любом случае
+        if: ${{ always() }}
+        run: echo "Run on any case"
