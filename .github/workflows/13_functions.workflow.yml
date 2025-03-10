@@ -22,3 +22,12 @@ jobs:
       - name: Run on Failure # Данный шаг выполнится только в том случае, если один из предыдущих шаг завершится с ошибкой
         if: ${{ failure() }}
         run: echo "Run on Failure"
+  secondo_job:
+    runs-on: ubuntu-latest
+    # Зависит от джобы primo_job
+    needs: primo_job
+    # Проверяем, что первая джоба завершилась с неудачей
+    if: ${{ failure() }}
+    steps:
+      - name: Run if first job failed
+        run: echo "I\m successful job!"
