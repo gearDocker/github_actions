@@ -29,7 +29,7 @@ jobs:
       - name: Updating artifact
         run: |
           value=`cat math-result.txt`
-          expr $value \* 2 > math-result.txt
+          expr $value \* 2 > updated-result.txt
 
       - name: Upload updated artifact
         uses: actions/upload-artifact@v4
