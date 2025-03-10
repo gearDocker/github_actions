@@ -1,0 +1,18 @@
+name: Artifacts
+
+run-name: Artifacts
+
+on: workflow_dispatch
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Math expression
+        run: expr 2 + 3 > math-result.txt
+
+      - name: Upload result file
+        uses: actions/upload-artifact@v4
+        with:
+          name: math-result
+          path: math-result.txt
