@@ -1,0 +1,28 @@
+name: Cache Workflow
+run-name: Cache Workflow
+on: workflow_dispatch
+
+jobs:
+  primo_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: "cache-file"
+
+      - name: Show cache files
+        run: echo ${{ toJson(steps.cache-node-modules.outputs) }}
+
+      - name: Install dependecies
+        run: npm install
