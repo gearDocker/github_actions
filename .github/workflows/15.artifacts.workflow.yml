@@ -34,8 +34,8 @@ jobs:
       - name: Upload updated artifact
         uses: actions/upload-artifact@v4
         with:
-          name: math-result
-          path: math-result.txt
+          name: updated-result
+          path: updated-result.txt
 
   tetro_job:
     runs-on: ubuntu-latest
@@ -44,9 +44,9 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: math-result
+          name: updated-result
 
       - name: Show artifact
         run: |
-          value=`cat math-result.txt`
+          value=`cat updated-result.txt`
           echo $value
