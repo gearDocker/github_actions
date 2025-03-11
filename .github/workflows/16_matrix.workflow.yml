@@ -6,10 +6,13 @@ on: workflow_dispatch
 
 jobs:
   matrix_job:
+    continue-on-error: true
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
         node-version: [16, 18, 20]
+      fail-fast: true
+      max-parallel: 3
     runs-on: ${{ matrix.os }}
     steps:
       # step 1
