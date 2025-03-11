@@ -1,0 +1,21 @@
+name: Matrix Workflow
+
+run-name: Matrix Workflow
+
+on: workflow_dispatch
+
+jobs:
+  matrix_job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+    steps:
+      # step 1
+      - run: node -v
+      # step 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      # step 3
+      - run: node -v
