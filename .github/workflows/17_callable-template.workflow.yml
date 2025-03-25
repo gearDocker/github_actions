@@ -1,0 +1,19 @@
+name: Callable Template Workflow
+
+run-name: Callable Template Workflow
+
+on:
+  workflow_call:
+    inputs:
+      title:
+        description: "Test title"
+        type: string
+        default: "Default title"
+        required: true
+
+jobs:
+  reuse_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reuse step
+        run: echo "${{ inputs.title }}"

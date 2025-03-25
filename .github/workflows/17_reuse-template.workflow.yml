@@ -1,0 +1,18 @@
+name: Reuse Template Workflow
+
+run-name: Reuse Template Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Test title"
+        type: string
+        default: "Default title"
+        required: true
+
+jobs:
+  call-workflow:
+    uses: ./github/workflows/17_callable-template.workflow.yml
+    with:
+      title: ${{ inputs.title }}
