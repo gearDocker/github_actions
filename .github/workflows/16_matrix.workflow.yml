@@ -11,6 +11,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         node-version: [16, 18, 20]
+        include:
+          - os: windows-latest
+            node-version: 22
+        exclude:
+          - os: macos-latest
+            node-version: [16, 20]
       fail-fast: true
       max-parallel: 3
     runs-on: ${{ matrix.os }}
