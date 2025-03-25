@@ -13,6 +13,6 @@ on:
 
 jobs:
   call-workflow:
-    uses: ./github/workflows/17_callable-template.workflow.yml
+    uses: ./.github/workflows/17_callable-template.workflow.yml
     with:
       title: ${{ inputs.title }}

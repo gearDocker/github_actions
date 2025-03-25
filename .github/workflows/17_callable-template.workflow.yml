@@ -12,7 +12,7 @@ on:
         required: true
 
 jobs:
-  reuse_job:
+  reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
       - name: Reuse step
