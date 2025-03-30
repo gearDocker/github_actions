@@ -3,7 +3,9 @@ name: Reuse Template Workflow
 run-name: Reuse Template Workflow
 
 on:
+  # вызываем workflow вручную
   workflow_dispatch:
+    # эти данные будем передавать в вызываемый workflow
     inputs:
       title:
         description: "Test title"
@@ -12,12 +14,17 @@ on:
         required: true
 
 jobs:
+  # workflow в текущем репозитории
   call-workflow:
-    # указываем путь к тому workflow, который будем вызывать на исполнение
+    # указываем путь к workflow, который будем вызывать на исполнение
     uses: ./.github/workflows/17_callable-template.workflow.yml
+    # указываем, что будем передавать в вызываемый workflow
     with:
       title: "${{ inputs.title }}"
-  ext-workflow:
+  # workflow в стороннем репозитории
+  external-workflow:
+    # ссылка на полный путь к репозиторию с вызываемым workflow
     uses: gearDocker/githib_actions_workflows/.github/workflows/callable.workflow.yml@main
+    # указываем, что будем передавать в вызываемый workflow
     secrets:
       PASSWORD: "${{ secrets.PASSWORD }}"
