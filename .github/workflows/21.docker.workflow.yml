@@ -1,0 +1,18 @@
+name: Docker Workflow
+
+run-name: Docker Workflow
+
+on:
+  # вызываем workflow вручную
+  workflow_dispatch
+
+jobs:
+  run_docker:
+    runs-on: ubuntu-latest
+    # здесь указываем, что будем использовать конкретный docker-образ
+    container:
+      image: node:18-alpine
+    # шаги выполняем уже в среде docker-образа, не текущего runner'а
+    steps:
+      - name: Show Node version
+        run: node -v
