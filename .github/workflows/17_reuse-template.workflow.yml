@@ -3,6 +3,7 @@ name: Reuse Template Workflow
 run-name: Reuse Template Workflow
 
 on:
+  # ручной запуск данного workflow
   workflow_dispatch:
     inputs:
       title:
@@ -13,6 +14,7 @@ on:
 
 jobs:
   call-workflow:
+    # указываем путь к тому workflow, который будем вызывать на исполнение
     uses: ./.github/workflows/17_callable-template.workflow.yml
     with:
       title: ${{ inputs.title }}

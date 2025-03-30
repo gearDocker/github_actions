@@ -3,6 +3,7 @@ name: Callable Template Workflow
 run-name: Callable Template Workflow
 
 on:
+  # Этот тип события говорит, что данный workflow будет вызываться на исполнение только другим workflow
   workflow_call:
     inputs:
       title:
