@@ -18,3 +18,8 @@ jobs:
     uses: ./.github/workflows/17_callable-template.workflow.yml
     with:
       title: ${{ inputs.title }}
+
+  call-external-workflow:
+    uses: gearDocker/githib_actions_workflows/.github/workflows/callable.workflow.yml@main
+    secrets:
+      PASSWORD: "${{ secrets.PASSWORD }}"
