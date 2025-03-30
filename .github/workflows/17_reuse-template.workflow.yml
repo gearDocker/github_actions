@@ -3,7 +3,6 @@ name: Reuse Template Workflow
 run-name: Reuse Template Workflow
 
 on:
-  # ручной запуск данного workflow
   workflow_dispatch:
     inputs:
       title:
@@ -17,9 +16,8 @@ jobs:
     # указываем путь к тому workflow, который будем вызывать на исполнение
     uses: ./.github/workflows/17_callable-template.workflow.yml
     with:
-      title: ${{ inputs.title }}
-
-  call-external-workflow:
+      title: "${{ inputs.title }}"
+  ext-workflow:
     uses: gearDocker/githib_actions_workflows/.github/workflows/callable.workflow.yml@main
     secrets:
       PASSWORD: "${{ secrets.PASSWORD }}"
