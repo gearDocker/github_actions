@@ -1,3 +1,4 @@
+# workflow, который вызывается на исполнение другим workflow
 name: Callable Template Workflow
 
 run-name: Callable Template Workflow
@@ -12,6 +13,12 @@ on:
         type: string
         default: "Default title"
         required: true
+    # создаем переменные на уровне workflow
+    outputs:
+      # имя конкретной переменной
+      current_date:
+        # значение переменной
+        value: ${{ jobs.create_output.outputs.date }}
 
 jobs:
   reusable_workflow_job:
@@ -19,3 +26,13 @@ jobs:
     steps:
       - name: Reuse step
         run: echo "${{ inputs.title }}"
+  create_output:
+    runs-on: ubuntu-latest
+    # создаем переменные на уровне текущего job
+    outputs:
+      # создали переменную date, к которой можно обратиться извне
+      date: ${{ steps.step-date.outputs.date }}
+    steps:
+      - name: Create output variable
+        run: echo "date=$(date)" >> $GITHUB_OUTPUT
+        id: step-date # id данного шага
