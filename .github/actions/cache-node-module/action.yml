@@ -9,6 +9,13 @@ inputs:
     description: "Enable or disable caching"
     default: "true"
 
+# спсиок исходящих параметров данного action
+outputs:
+  # исходящий ключ с его описанием
+  status:
+    value: "active"
+    description: "Status from action"
+
 runs:
   # указываем тип action'а
   using: composite
