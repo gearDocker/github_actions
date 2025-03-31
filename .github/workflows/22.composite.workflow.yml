@@ -15,4 +15,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Using custom action
+        # путь к кастомному action
         uses: ./.github/actions/cache-node-module
+        # передаем дополнительный параметр в кастомный action
+        with:
+          caching: "false"

@@ -1,10 +1,20 @@
 name: "Install and Cache Node Modules"
 description: "My first Composite Action"
+
+# список входящих параметров для данного action
+inputs:
+  # входящий ключ с его описанием
+  caching:
+    required: true
+    description: "Enable or disable caching"
+    default: "true"
+
 runs:
   # указываем тип action'а
   using: composite
   steps:
       - name: Cache node_modules
+        if: inputs.caching == true # шаг не будет выполняться, если передан параметр caching=false
         id: cache-node-modules
         uses: actions/cache@v4
         with:
