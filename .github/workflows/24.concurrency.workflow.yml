@@ -8,6 +8,8 @@ concurrency:
   # задаем произвольный id (concurrency_test) для группы одновременно запускаемых workflows
   group: concurrency_test
   # запускаем только последний workflow из очереди
+  # если установить значение в false, то запустится на исполнение первый workflow из очереди
+  # и после его завершения - последний workflow из очереди
   cancel-in-progress: true
 
 jobs:
