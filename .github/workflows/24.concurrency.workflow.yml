@@ -1,0 +1,19 @@
+name: Concurrency Workflow
+run-name: Concurrency Workflow
+
+on: workflow_dispatch
+
+# можем управлять, как будут выполняться параллельно запущенные на исполнение workflows
+concurrency:
+  # задаем произвольный id (concurrency_test) для группы одновременно запускаемых workflows
+  group: concurrency_test
+  # запускаем только последний workflow из очереди
+  cancel-in-progress: true
+
+jobs:
+  testing_concurrency:
+    runs-on: ubuntu-latest
+    steps:
+      - name: One step
+        run: sleep 50
+        timeout-minutes: 1
