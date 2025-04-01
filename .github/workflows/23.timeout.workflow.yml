@@ -1,0 +1,16 @@
+name: Timeout Workflow
+
+run-name: Timeout Workflow
+
+on: workflow_dispatch
+
+jobs:
+  test_timeout:
+    runs-on: ubuntu-latest
+    # ставим лимит выполнения текущей job'ы в 1 минуту
+    # другими словами, данная джоба будет выполняться не дольше одной минуты, после чего принудительно завершит свое выполнение
+    # вне зависимости от статуса процесса, выполнился ли он к тому моменту или еще выполняется
+    timeout-minutes: 1
+    steps:
+      - name: Test timeout
+        run: sleep 200 # ставим задержку выполнения данного шага в 200 секунд
